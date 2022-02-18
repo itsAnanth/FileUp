@@ -4,7 +4,7 @@ const fileName = 'memory/index.js';
 
 const read = () => {
     let data = fs.readFileSync(fileName, 'utf-8');
-    return JSON.parse(data ? data : {});
+    return JSON.parse(data ? data : "{}");
 }
 
 const write = (data) => {
