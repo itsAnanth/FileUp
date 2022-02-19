@@ -22,7 +22,7 @@ const upload = (request, response) => {
     const host = request.hostname == 'localhost' ? `${request.hostname}:3000` : request.hostname;
     const file = request.files[0];
     const fileId = uuid();
-    const link = `http://${request.hostname}/${fileId}/play`;
+    const link = `http://${host}/${fileId}/play`;
 
     const data = {
         name: file.originalname,
