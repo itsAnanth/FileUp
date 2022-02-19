@@ -1,5 +1,6 @@
 import { getFile } from "../memory/index.js";
 import fs from 'fs';
+import Response from "../utils/Response.js";
 
 function render(req, res) {
     const index_file = `
@@ -22,7 +23,9 @@ async function stream(req, res) {
     try {
         buffer = await getFile(id);
     } catch (e) {
-        return console.log(e);
+        console.log(e);
+        res.send(Response.error('Invalid video id'));
+        return;
     }
 
     pipe(req, res, buffer);
