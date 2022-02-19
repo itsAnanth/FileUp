@@ -7,7 +7,7 @@ function render(req, res) {
       <title>Sample Video Stream</title>
       <body>
           <video width="320" height="240" controls>
-              <source src="/video/`+ req.params.id + `/play" type="video/mp4"/>
+              <source src="/`+ req.params.id + `/play" type="video/mp4"/>
               Your browser does not support the <code>video</code> element.
           </video>
           <br>
