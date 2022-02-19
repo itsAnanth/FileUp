@@ -28,10 +28,12 @@ const upload = (request, response) => {
         name: file.originalname,
         size: file.size,
         encoding: file.encoding,
-        details: request.body.details ? request.body.details : ''
+        details: request.body.details ? request.body.details : '',
+        time: Date.now()
     }
 
     writeFile(fileId, file.buffer);
+    write(fileId, data)
     response.send(IResponse.success({ link: link }));
 
 }
