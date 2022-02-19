@@ -19,7 +19,7 @@ const __init__ = (req, res) => {
 }
 
 const upload = (request, response) => {
-
+    const host = request.hostname == 'localhost' ? `${request.hostname}:3000` : request.hostname;
     const file = request.files[0];
     const fileId = uuid();
     const link = `http://${request.hostname}/${fileId}/play`;
