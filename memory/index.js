@@ -4,6 +4,10 @@ import path from 'path';
 const fileName = 'memory/files.json';
 const filepath = './uploads';
 
+/**
+ * 
+ * @returns {object}
+ */
 const read = () => {
     let data = fs.readFileSync(fileName, 'utf-8');
     return JSON.parse(String(data ? data : "{}"));
@@ -12,6 +16,14 @@ const read = () => {
 const write = (id, data) => {
     let current = read();
     current[id] = data;
+    current = JSON.stringify(current);
+    fs.writeFileSync(fileName, current, 'utf-8');
+}
+
+const _delete = (id) => {
+    let current = read();
+    if (!current[id]) return;
+    delete current[id];
     current = JSON.stringify(current);
     fs.writeFileSync(fileName, current, 'utf-8');
 }
@@ -43,5 +55,5 @@ const get = (id) => {
     return (read())[id];
 }
 
-export { get, write, read, writeFile, getFile };
+export { get, write, read, writeFile, getFile, _delete };
 
