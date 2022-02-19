@@ -7,6 +7,7 @@ import IResponse from '../utils/Response.js';
 import uuid from 'uuid-random';
 import fs from 'fs';
 
+
 const { Response, Request } = pkg;
 /**
  * 
@@ -21,9 +22,7 @@ const upload = (request, response) => {
 
     const file = request.files[0];
     const fileId = uuid();
-    const link = `http://${request.hostname}/video/${fileId}`;
-
-    IResponse.success({ link: link });
+    const link = `http://${request.hostname}/${fileId}/play`;
 
     const data = {
         name: file.originalname,
@@ -33,6 +32,7 @@ const upload = (request, response) => {
     }
 
     writeFile(fileId, file.buffer);
+    response.send(IResponse.success({ link: link }));
 
 }
 
