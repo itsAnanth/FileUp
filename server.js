@@ -35,7 +35,7 @@ class Server {
     }
 
     listenToPort() {
-        this.server.listen(this.PORT, () => console.log(`[${__filename}] server running on port ${this.PORT}`));
+        this.server.listen(this.PORT, () => console.log(`[server] server running on port ${this.PORT}`));
     }
 }
 
