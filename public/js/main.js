@@ -36,10 +36,11 @@ function uploadVideo(customMessage) {
 function onComplete(event) {
     let customMessage = document.getElementById('message');
     const response = JSON.parse(event.currentTarget.response);
+    console.log(response);
     if (response.success) {
         document.getElementById('main-div').style.display = 'none';
         customMessage.style.color = '#9C27B0';
-        customMessage.innerHTML = 'Video Uploaded successfully!!. Please <a href=' + response.link + '>click here</a> to view the video.';
+        customMessage.innerHTML = `Video Uploaded successfully!!. Please <a href=${response.message.link}>click here</a> to view the video.`;
     } else {
         customMessage.innerHTML = response.error;
         customMessage.style.color = 'red';
